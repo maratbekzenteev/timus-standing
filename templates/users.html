@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<table cellpadding=0 cellspacing=5 width="100%">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                <table class="panel" align="CENTER" valign="CENTER"
+                       border="0" width="100%" cellpadding=0 cellspacing=0>
+                    <tr align="CENTER" class="header">
+                        <td rowspan="2" height="115" width="15%" valign="CENTER"
+                            style="background-image: url(/static/img/lyceum.png); background-size: 100% 100%">
+                        </td>
+                        <td colspan="3" valign="CENTER" height="48">Timus standing</td>
+                    </tr>
+                    <tr align="CENTER">
+                        <td><a href="/">Положение</a></td>
+                        <td><a href="/users">Пользователи</a></td>
+                        <td><a href="/about">О нас</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="CENTER" valign="CENTER" height="100" colspan="2">
+                <h1>Отслеживаемые участники</h1>
+            </td>
+        </tr>
+
+        <tr>
+            <form method="post" class="main" action="" novalidate>
+                <td colspan="2" valign="CENTER" align="CENTER" height="50" style="font-size: 24px;">
+                    <table cellspacing="0" cellpadding="5" class="panel" width="100%">
+                        <tr class="header">
+                            <td width="70%">
+                                Добавить участников по шаблону никнейма
+                            </td>
+                            <td width="20%">
+                                <input type="text" name="template" size="50">
+                            </td>
+                            <td width="10%" align="CENTER">
+                                <input type = "submit" name='button' value="Добавить">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </form>
+        </tr>
+
+        <tr>
+            <td align="CENTER" valign="TOP" width="100%">
+                <table cellpadding="5" cellspacing="0" class="panel" width="100%">
+                    <tr class="header">
+                        <td width="20%">ID</td>
+                        <td width="70%">Имя участника</td>
+                        <td width="10%" align="CENTER">Удалить</td>
+                    </tr>
+                    {% for user in users %}
+                    {% if loop.index % 2 == 0 %}
+                    <tr class="even">
+                    {% else %}
+                    <tr class="odd">
+                    {% endif %}
+                        <td>{{ user.id }}</td>
+                        <td><a href="https://acm.timus.ru/author.aspx?id={{ user.id }}">{{ user.name }}</a></td>
+                        <td align="CENTER"><a href="/delete_user/{{ user.id }}" class="delete"><b>X</b></a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

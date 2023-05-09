@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Положение</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<table cellpadding=0 cellspacing=5 width="100%">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                <table class="panel" align="CENTER" valign="CENTER"
+                       border="0" width="100%" cellpadding=0 cellspacing=0>
+                    <tr align="CENTER" class="header">
+                        <td rowspan="2" height="115" width="15%" valign="CENTER"
+                            style="background-image: url(/static/img/lyceum.png); background-size: 100% 100%">
+                        </td>
+                        <td colspan="3" valign="CENTER" height="48">Timus standing</td>
+                    </tr>
+                    <tr align="CENTER">
+                        <td><a href="/">Положение</a></td>
+                        <td><a href="/users">Пользователи</a></td>
+                        <td><a href="/about">О нас</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="CENTER" valign="CENTER" height="100" colspan="2">
+                <h1>Положение отслеживаемых участников</h1>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="30%" align="CENTER" valign="TOP">
+                <form method="post" class="main" action="" novalidate>
+                <table cellpadding="5" cellspacing="0" class="panel" width="100%">
+                    <tr class="header">
+                        <td colspan="2" align="LEFT">
+                            Фильтры
+                        </td>
+                        <td colspan="2" align="RIGHT">
+                            <input type = "submit" name='button' value="Искать">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="CENTER">Время</td>
+                    </tr>
+                    <tr>
+                        <td align="CENTER" width="10%">C</td>
+                        <td align="CENTER" width="40%"><input type="datetime-local" min="1970-01-01T00:00" max="2038-01-19T00:00" name="start_time">
+                        </td>
+                        <td align="CENTER" width="10%">по</td>
+                        <td align="CENTER" width="40%"><input type="datetime-local" min="1970-01-01T00:00" max="2038-01-19T00:00" name="end_time">
+                        </td>
+                    </tr>
+                    <tr class="even">
+                        <td colspan="4" align="CENTER">Сложность</td>
+                    </tr>
+                    <tr class="even">
+                        <td align="CENTER" width="10%">От</td>
+                        <td align="CENTER" width="40%"><input type="number" min="0" name="min_diff">
+                        </td>
+                        <td align="CENTER" width="10%">до</td>
+                        <td align="CENTER" width="40%"><input type="number" min="0" name="max_diff">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="CENTER">Теги</td>
+                    </tr>
+                    {% for algo in algos %}
+                    <tr>
+                        <td colspan="4" align="CENTER"><input type="checkbox" name="{{ algo.name }}" id="{{ algo.name }}"><label for="{{ algo.name }}">{{ algo.name }}</label></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                </form>
+            </td>
+            <td align="CENTER" valign="TOP" width="70%">
+                <table cellpadding="5" cellspacing="0" class="panel" width="100%">
+                    <tr class="header">
+                        <td width="10%">Место</td>
+                        <td width="70%">Имя участника</td>
+                        <td width="20%">К-во задач</td>
+                    </tr>
+                    {% for user in users %}
+                    {% if loop.index % 2 == 0 %}
+                    <tr class="even">
+                    {% else %}
+                    <tr class="odd">
+                    {% endif %}
+                        <td>{{ loop.index }}</td>
+                        <td><a href="https://acm.timus.ru/author.aspx?id={{ user[2] }}">{{ user[1] }}</a></td>
+                        <td>{{ user[0] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

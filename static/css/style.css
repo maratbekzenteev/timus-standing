@@ -1,0 +1,49 @@
+table .panel {
+font-size: 20px;
+border-collapse: separate;
+font-style: normal;
+border: 2px solid #1A5CC8;
+padding: 0px;
+}
+
+tr {
+color: #000000;
+background-color: #FFFFFF;
+}
+
+tr .odd {
+color: #000000;
+background-color: #FFFFFF;
+}
+
+tr .even {
+color: #000000;
+background-color: #EEEEEE;
+}
+
+tr .header {
+color: #FFFFFF;
+background-color: #1A5CC8;
+font-size: 24px;
+}
+
+input[type="submit"] {
+border-style: default;
+background-color: #DDDDDD;
+color: #000000;
+border-color: #DDDDDD;
+}
+
+.header input[type="submit"] {
+border-style: default;
+background-color: #2D72E3;
+color: #ffffff;
+border-color: #2D72E3;
+font-size: 18px;
+}
+
+.panel .delete {
+    color: #FF0000;
+    text-decoration: none;
+    font-size: 32px;
+}
